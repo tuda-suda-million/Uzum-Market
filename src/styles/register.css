@@ -1,7 +1,7 @@
 body {
   margin: 0;
-  background: #6f2cff;
   font-family: Arial, sans-serif;
+  background-color: #6f2cff;
 }
 
 .app {
@@ -9,6 +9,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  
 }
 
 .register {

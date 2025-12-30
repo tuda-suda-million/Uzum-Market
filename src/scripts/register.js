@@ -89,7 +89,8 @@ registerBtn.addEventListener("click", () => {
   localStorage.setItem("registered", "true");
 
   
-  window.location.href = "/src/main.js"; 
+  localStorage.setItem("registered", "true");
+  location.reload();
 });
 
  

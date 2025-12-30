@@ -1,0 +1,27 @@
+.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: #fff;
+  padding: 12px;
+  border-radius: 12px;
+}
+
+.card img {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+}
+
+.old {
+  text-decoration: line-through;
+  color: gray;
+}
+
+.price {
+  font-weight: bold;
+  color: #7000ff;
+}
