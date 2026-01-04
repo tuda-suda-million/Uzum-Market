@@ -29,85 +29,52 @@ export function showRegister(app) {
         
   `;
 
- 
+    
+document.getElementById("user-name")
+.addEventListener("input", e => {
+ e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-Я]/g, "");
+ });
+  document.getElementById("user-phone")
+  .addEventListener("input", e => {
+  if (!e.target.value.startsWith("+998 ")) { 
+  e.target.value = "+998 ";
+ } 
+ e.target.value = "+998 " + e.target.value.slice(5).replace(/\D/g, "");
+ });
+  const nameInput = document.getElementById("user-name");
+  const phoneInput = document.getElementById("user-phone");
+  const registerBtn = document.getElementById("registerBtn");
+  const error = document.getElementById("error");
+   nameInput.addEventListener("input", e => {
+   e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-Я]/g, "");
+    if (e.target.value.length > 0) {
+     e.target.value = e.target.value[0].toUpperCase() + e.target.value.slice(1);
+     }
+     });
+     phoneInput.addEventListener("input", e => { if (!e.target.value.startsWith("+998 ")) {
+       e.target.value = "+998 ";
+    } 
+    let digits = e.target.value.slice(5).replace(/\D/g, "");
+     if (digits.length > 7) digits = digits.slice(0, 7); 
+     e.target.value = "+998 " + digits; });
+      registerBtn.addEventListener("click", () => { 
+        const nameVal = nameInput.value.trim();
+         const phoneVal = phoneInput.value.trim();
+          if (!/^[A-ZА-Я]/.test(nameVal)) {
+             error.textContent = "Имя должно начинаться с заглавной буквы.";
+              return;
+             }
+              const phoneDigits = phoneVal.slice(5).replace(/\D/g, "");
+             if (phoneDigits.length !== 7) { 
+              error.textContent = "Телефон должен содержать ровно 7 цифр после +998.";
+               return;
+               }
+                localStorage.setItem("username", nameVal);
+                 localStorage.setItem("phone", phoneVal);
+                 localStorage.setItem("registered", "true");
+                  localStorage.setItem("registered", "true");
+                   location.reload(); });
 
 
 
-  document.getElementById("user-name").addEventListener("input", e => {
-  e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-Я]/g, "");
-});
-
-  document.getElementById("user-phone").addEventListener("input", e => {
-  if (!e.target.value.startsWith("+998 ")) {
-    e.target.value = "+998 ";
-  }
-  e.target.value = "+998 " + e.target.value.slice(5).replace(/\D/g, "");
-});
-
-
-const nameInput = document.getElementById("user-name");
-const phoneInput = document.getElementById("user-phone");
-const registerBtn = document.getElementById("registerBtn");
-const error = document.getElementById("error");
-
-
-nameInput.addEventListener("input", e => {
-  
-  e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-Я]/g, "");
-  
-  if (e.target.value.length > 0) {
-    e.target.value = e.target.value[0].toUpperCase() + e.target.value.slice(1);
-  }
-});
-
-
-phoneInput.addEventListener("input", e => {
-  if (!e.target.value.startsWith("+998 ")) {
-    e.target.value = "+998 ";
-  }
-  let digits = e.target.value.slice(5).replace(/\D/g, "");
-  if (digits.length > 7) digits = digits.slice(0, 7); 
-  e.target.value = "+998 " + digits;
-});
-
-
-registerBtn.addEventListener("click", () => {
-  const nameVal = nameInput.value.trim();
-  const phoneVal = phoneInput.value.trim();
-
-
-  if (!/^[A-ZА-Я]/.test(nameVal)) {
-    error.textContent = "Имя должно начинаться с заглавной буквы.";
-    return;
-  }
-
-  
-  const phoneDigits = phoneVal.slice(5).replace(/\D/g, "");
-  if (phoneDigits.length !== 7) {
-    error.textContent = "Телефон должен содержать ровно 7 цифр после +998.";
-    return;
-  }
-
-  
-  localStorage.setItem("username", nameVal);
-  localStorage.setItem("phone", phoneVal);
-  localStorage.setItem("registered", "true");
-
-  
-  localStorage.setItem("registered", "true");
-  location.reload();
-});
-
- 
-  registerBtn.onclick = () => {
-    if (!nameInput.value) {
-      alert("Введите имя");
-      return;
-    }
-
-    localStorage.setItem("registered", "true");
-    localStorage.setItem("username", nameInput.value);
-
-    location.reload(); 
-  }
 }
