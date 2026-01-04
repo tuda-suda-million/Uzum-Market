@@ -1,5 +1,5 @@
 import "../styles/register.css";
- import { showMain } from "./home";
+
 export function showRegister(app) {
   app.innerHTML = `
     <div class="app">
@@ -31,13 +31,6 @@ export function showRegister(app) {
 
  
 
-document
-  .getElementById("registerBtn")
-  .addEventListener("click", () => {
-    const app = document.getElementById("app");
-
-    showMain(app); // 🔥 ВОТ ТУТ ПРОИСХОДИТ ПЕРЕХОД
-  });
 
 
   document.getElementById("user-name").addEventListener("input", e => {

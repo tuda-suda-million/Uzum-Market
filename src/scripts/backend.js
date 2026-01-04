@@ -1,11 +1,5 @@
-import { Header } from "../components/Header";
 
-const app = document.getElementById("app");
 
-app.innerHTML = `
-  ${Header}
-  <h1>Hello world</h1>
-`;
 
 async function getData() {
   try {
