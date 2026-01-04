@@ -1,4 +1,5 @@
 import "../styles/register.css";
+ import { showMain } from "./home";
 export function showRegister(app) {
   app.innerHTML = `
     <div class="app">
@@ -27,6 +28,17 @@ export function showRegister(app) {
          <a href="https://uzum.uz/uz/faq">Что такое Uzum ID?</a></p>
         
   `;
+
+ 
+
+document
+  .getElementById("registerBtn")
+  .addEventListener("click", () => {
+    const app = document.getElementById("app");
+
+    showMain(app); // 🔥 ВОТ ТУТ ПРОИСХОДИТ ПЕРЕХОД
+  });
+
 
   document.getElementById("user-name").addEventListener("input", e => {
   e.target.value = e.target.value.replace(/[^a-zA-Zа-яА-Я]/g, "");
