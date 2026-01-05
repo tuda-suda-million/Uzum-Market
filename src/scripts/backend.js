@@ -1,4 +1,6 @@
+import { Header } from "../components/Header";
 
+const app = document.getElementById("app");
 
 
 async function getData() {
